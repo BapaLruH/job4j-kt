@@ -51,7 +51,42 @@ fun draw(size: Int) {
         for (value in 0..size step 2) {
             print("X")
         }
+        println()
     }
+}
+
+fun createArray() {
+    val names = arrayOfNulls<String>(10)
+    names[0] = "Ivanov Ivan"
+    for ((index, name) in names.withIndex()) {
+        println("$index " + name?.length)
+    }
+}
+
+fun createArrayList() {
+    val names = ArrayList<String>()
+    names.add("Ivanov Ivan")
+    for (name in names) {
+        println(name)
+    }
+}
+
+fun sortArray(array: Array<String?>) : Array<String?>{
+    for ((index, value) in array.withIndex()) {
+        if (value != null) {
+            continue
+        }
+        for (i in index + 1 until array.size) {
+            if (array[i] != null) {
+                array[index] = array[i]
+                array[i] = null
+                break
+            } else {
+                continue
+            }
+        }
+    }
+    return array
 }
 
 fun main() {
@@ -73,4 +108,7 @@ fun main() {
     println("Sum : ${sumByStep2(1, 5)}")
     println("Sum : ${sumDownTo(1, 5)}")
     draw(51)
+    createArray()
+    createArrayList()
+
 }
